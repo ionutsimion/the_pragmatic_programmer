@@ -1,2 +1,8 @@
 /cmake-build-release/
 /cmake-build-debug/
+/.idea/.gitignore
+/.idea/.name
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/the-pragmatic-programmer.iml
+/.idea/vcs.xml
