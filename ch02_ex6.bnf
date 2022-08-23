@@ -1,0 +1,6 @@
+time = short hours , [ ":"  , minutes ] , time of day | long hours , ":" , minutes ;
+short hours = digit non zero | "1" , "0" | "1" , "1" | "1" , "2" ;
+long hours = digit | "1" , digit | "2" , "0" | "2" , "1" | "2" , "2" | "2" , "3" ;
+minutes = ( "0" | "1" | "2" | "3" | "4" | "5" ) , digit ;
+digit non zero = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+digit = "0" | digit non zero ;
