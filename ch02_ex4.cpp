@@ -7,11 +7,10 @@
 #include <iostream>
 
 #include "ch02_ex4.hpp"
+#include "parse_utils.hpp"
 
 namespace
 {
-    using cursor_t = std::string::const_iterator;
-
     struct invalid_parameter_exception : std::exception
     {
         [[nodiscard]] char const *what() const noexcept override
@@ -50,14 +49,7 @@ namespace
         std::string text_{ "Error: Invalid number of parameters: " };
     };
 
-    auto skip_whitespaces(cursor_t cursor, cursor_t end)
-    {
-        while (cursor != end && (std::isspace(*cursor)))
-            ++cursor;
-        return cursor;
-    }
-
-    auto skip_comment(cursor_t cursor, cursor_t end)
+    auto skip_comment(tpp::cursor_t cursor, tpp::cursor_t end)
     {
         while (cursor != end && *cursor != '\n')
             ++cursor;
@@ -69,13 +61,13 @@ namespace
         return c - '0';
     }
 
-    auto scan_for_parameters(cursor_t cursor, cursor_t end, uint8_t number_of_parameters)
+    auto scan_for_parameters(tpp::cursor_t cursor, tpp::cursor_t end, uint8_t number_of_parameters)
     {
         std::vector<int> parameters{};
 
         while (cursor != end && parameters.size() < number_of_parameters)
         {
-            cursor = skip_whitespaces(cursor, end);
+            cursor = tpp::skip_whitespaces(cursor, end);
 
             if (!std::isdigit(*cursor))
                 throw invalid_parameter_exception();

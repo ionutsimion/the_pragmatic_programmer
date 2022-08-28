@@ -1,6 +1,11 @@
+(*
+    Design a BNF grammar to parse a time specification. All of the following examples should be accepted:
+        4pm, 7:38pm, 23:42, 3:16, 3:16am
+*)
 time = short hours , [ ":"  , minutes ] , time of day | long hours , ":" , minutes ;
-short hours = digit non zero | "1" , "0" | "1" , "1" | "1" , "2" ;
+short hours = strictly positive digit | "1" , "0" | "1" , "1" | "1" , "2" ;
 long hours = digit | "1" , digit | "2" , "0" | "2" , "1" | "2" , "2" | "2" , "3" ;
 minutes = ( "0" | "1" | "2" | "3" | "4" | "5" ) , digit ;
-digit non zero = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
-digit = "0" | digit non zero ;
+digit = "0" | strictly positive digit ;
+strictly positive digit = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+time of day = ( "a" | "p" ) , "m" ;

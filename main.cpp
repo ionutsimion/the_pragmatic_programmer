@@ -2,6 +2,7 @@
 
 #include "ch02_ex4.hpp"
 #include "ch02_ex5.hpp"
+#include "ch02_ex7.hpp"
 
 namespace tpp
 {
@@ -13,7 +14,8 @@ namespace tpp
             {
             case 4: return ch2::ex4::run();
             case 5: return ch2::ex5::run();
-            default: return EXIT_FAILURE;
+            case 7: return ch2::ex7::run();
+            default: break;
             }
         }
 
@@ -23,6 +25,7 @@ namespace tpp
 
 int main()
 {
+    return tpp::ch2::ex7::run();
     std::cout << "Enter your command:"
                  "\n\t<chapter> <exercise>, where chapter and exercise are integers;"
                  "\n\tenter 0 for chapter or exercise to quit.\n" << std::endl;
